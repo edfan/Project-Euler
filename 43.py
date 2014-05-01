@@ -1,42 +1,86 @@
-def pandigital(x):
-    listx = []
-    for a in str(x):
-        listx.append(int(a))
-    listx.sort()
-    if listx == [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]:
-        return True
-    else:
-        return False
+def permutation():
+    permutations = []
+    for a in range(0, 10):
+        chosen = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+        chosen.remove(a)
+        for b in chosen:
+            chosen = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+            chosen.remove(a)
+            chosen.remove(b)
+            for c in chosen:
+                chosen = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+                chosen.remove(a)
+                chosen.remove(b)
+                chosen.remove(c)
+                for d in chosen:
+                    chosen = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+                    chosen.remove(a)
+                    chosen.remove(b)
+                    chosen.remove(c)
+                    chosen.remove(d)
+                    for e in chosen:
+                        chosen = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+                        chosen.remove(a)
+                        chosen.remove(b)
+                        chosen.remove(c)
+                        chosen.remove(d)
+                        chosen.remove(e)
+                        for f in chosen:
+                            chosen = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+                            chosen.remove(a)
+                            chosen.remove(b)
+                            chosen.remove(c)
+                            chosen.remove(d)
+                            chosen.remove(e)
+                            chosen.remove(f)
+                            for g in chosen:
+                                chosen = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+                                chosen.remove(a)
+                                chosen.remove(b)
+                                chosen.remove(c)
+                                chosen.remove(d)
+                                chosen.remove(e)
+                                chosen.remove(f)
+                                chosen.remove(g)
+                                for h in chosen:
+                                    chosen = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+                                    chosen.remove(a)
+                                    chosen.remove(b)
+                                    chosen.remove(c)
+                                    chosen.remove(d)
+                                    chosen.remove(e)
+                                    chosen.remove(f)
+                                    chosen.remove(g)
+                                    chosen.remove(h)
+                                    for i in chosen:
+                                        chosen = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+                                        chosen.remove(a)
+                                        chosen.remove(b)
+                                        chosen.remove(c)
+                                        chosen.remove(d)
+                                        chosen.remove(e)
+                                        chosen.remove(f)
+                                        chosen.remove(g)
+                                        chosen.remove(h)
+                                        chosen.remove(i)
+                                        for j in chosen:
+                                            currentstring = str(a) + str(b) + str(c) + str(d) + str(e) + str(f) + str(g) + str(h) + str(i) + str(j)
+                                            permutations.append(int(currentstring))
 
-def divisible(x):
-    listx = []
-    for a in str(x):
-        listx.append(a)
-    if int(listx[1] + listx[2] + listx[3]) % 2 != 0:
-        return False
-    elif int(listx[2] + listx[3] + listx[4]) % 3 != 0:
-        return False
-    elif int(listx[3] + listx[4] + listx[5]) % 5 != 0:
-        return False
-    elif int(listx[4] + listx[5] + listx[6]) % 7 != 0:
-        return False
-    elif int(listx[5] + listx[6] + listx[7]) % 11 != 0:
-        return False
-    elif int(listx[6] + listx[7] + listx[8]) % 13 != 0:
-        return False
-    elif int(listx[7] + listx[8] + listx[9]) % 17 != 0:
-        return False
-    else:
-        return True
+    permutations.sort()
+    return permutations
 
-assert pandigital(1406357289) == True
-assert divisible(1406357289) == True
+permlist = permutation()
+total = 0
 
-solutions = []
+for x in permlist:
+    if int(str(x)[1:4]) % 2 == 0:
+        if int(str(x)[2:5]) % 3 == 0:
+            if int(str(x)[3:6]) % 5 == 0:
+                if int(str(x)[4:7]) % 7 == 0:
+                    if int(str(x)[5:8]) % 11 == 0:
+                        if int(str(x)[6:9]) % 13 == 0:
+                            if int(str(x)[7:10]) % 17 == 0:
+                                total += x
 
-for x in xrange(1234567890, 9876543210):
-    if int(str(x)[3]) % 2 == 0:
-        if pandigital(x) == True:
-            if divisible(x) == True:
-                solutions.append(x)
-                print(x)
+print(total)

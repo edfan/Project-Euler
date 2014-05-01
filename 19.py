@@ -3,7 +3,7 @@ year = 1
 month = 1
 result = 0
 
-while year < 101:
+while year < 500:
     if month == 1:
         if day % 7 == 0:
             result += 1
@@ -20,6 +20,8 @@ while year < 101:
     if month == 3:
         if day % 7 == 0:
             result += 1
+        if day % 7 == 5:
+            print year + 1900
         day += 31
         month = 4
     if month == 4:

@@ -24,18 +24,18 @@ for x in range(1, 28123):
     if abundantfactor(x) == True:
         abundants.append(x)
 
-sums = []
-
-for x in abundants:
-    for y in abundants:
-        if x + y <= 28123 and x + y not in sums:
-            sums.append(x+y)
-            print(x+y)
-
 nonsum = []
 
-for x in range(1,28123):
-    if x not in sums:
+def test(x):
+    for y in abundants:
+        if y > x:
+            return True
+        if x - y in abundants:
+            return False
+    return True
+
+for x in xrange(1, 28123):
+    if test(x) == True:
         nonsum.append(x)
         print(x)
 

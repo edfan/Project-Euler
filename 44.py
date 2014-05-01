@@ -1,20 +1,20 @@
 import math
 
-def pentagonal(x):
+def pentagon(x):
     return x*(3*x-1)/2
 
-pentas = []
+def pentacheck(x):
+    if (math.sqrt(24*x+1)%6 == 5):
+        return True
+    return False
 
-for x in xrange(1, 5000):
-    pentas.append(pentagonal(x))
-    print(x)
+pents = []
 
-d = 10000
+for x in range(1, 5000):
+    pents.append(pentagon(x))
 
-for a in pentas:
-    for b in pentas:
-        if a+b in pentas and a-b in pentas and math.fabs(a-b) < d:
-            d = math.fabs(a-b)
-            print(d)
+for x in range(len(pents)):
+    for y in range(x+1, len(pents)):
+            if pentacheck(pents[y]-pents[x]) == True and pentacheck(pents[x]+pents[y]) == True:
+                print(pents[x], " ", pents[y], " ", pents[x]-pents[y])
 
-print(d)
